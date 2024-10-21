@@ -6,37 +6,44 @@ namespace Calculator.ConsoleApp
     {
         static void Main(string[] args)
         {
-            try
+            Console.WriteLine("Witaj w aplikacji KALKULATOR!");
+
+            while (true)
             {
-                Console.WriteLine("Witaj w aplikacji KALKULATOR!");
 
-                Console.WriteLine("Podaj proszę 1 liczbę:");
-                var number1 = GetInput();
+                try
+                {
+                    Console.WriteLine("Podaj proszę 1 liczbę:");
+                    var number1 = GetInput();
 
-                Console.WriteLine("Jaką operację chcesz wykonać? Możliwe operacje to: '+', '-', '*', '/'.");
-                var operation = Console.ReadLine();
+                    Console.WriteLine("Jaką operację chcesz wykonać? Możliwe operacje to: '+', '-', '*', '/'.");
+                    var operation = Console.ReadLine();
 
-                Console.WriteLine("Podaj proszę 2 liczbę:");
-                var number2 = GetInput();
+                    Console.WriteLine("Podaj proszę 2 liczbę:");
+                    var number2 = GetInput();
 
-                var result = Calculate(number1, number2, operation);
+                    var result = Calculate(number1, number2, operation);
 
-                Console.WriteLine($"Wynik Twojego działania to: {result}.");
+                    Console.WriteLine($"Wynik Twojego działania to: {Math.Round(result, 2)}.\n");
+
+                }
+                catch (Exception ex)
+                {
+                    //logowanie do pliku
+                    Console.WriteLine(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                //logowanie do pliku
-                Console.WriteLine(ex.Message);
-            }
-
         }
 
-        private static int GetInput()
+        private static double GetInput()
         {
-            return int.Parse(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double input))
+                throw new Exception("Podana wartość nie jest liczbą.\n");
+
+            return input;
         }
 
-        private static int Calculate(int number1, int number2, string operation)
+        private static double Calculate(double number1, double number2, string operation)
         {
             switch (operation)
             {
@@ -49,7 +56,7 @@ namespace Calculator.ConsoleApp
                 case "/":
                     return number1 / number2;
                 default:
-                    throw new Exception("Wybrałeś złą operację!");
+                    throw new Exception("Wybrałeś złą operację!\n");
             }
         }
     }
