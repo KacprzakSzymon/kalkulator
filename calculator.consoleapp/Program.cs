@@ -1,56 +1,56 @@
-﻿namespace Calculator.ConsoleApp
+﻿using System;
+
+namespace Calculator.ConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Witaj w aplikacji KALKULATOR!");
+            try
+            {
+                Console.WriteLine("Witaj w aplikacji KALKULATOR!");
 
-        
-            Console.WriteLine("Podaj proszę 1 liczbę:");
+                Console.WriteLine("Podaj proszę 1 liczbę:");
+                var number1 = GetInput();
 
-            
-            var number1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Jaką operację chcesz wykonać? Możliwe operacje to: '+', '-', '*', '/'.");
+                var operation = Console.ReadLine();
 
-           
-            Console.WriteLine("Jaką operację chcesz wykonać? Możliwe operacje to: '+', '-', '*', '/'.");
+                Console.WriteLine("Podaj proszę 2 liczbę:");
+                var number2 = GetInput();
 
-            var operation = Console.ReadLine();
+                var result = Calculate(number1, number2, operation);
 
-      
-            Console.WriteLine("Podaj proszę 2 liczbę:");
+                Console.WriteLine($"Wynik Twojego działania to: {result}.");
+            }
+            catch (Exception ex)
+            {
+                //logowanie do pliku
+                Console.WriteLine(ex.Message);
+            }
 
-          
-            var number2 = int.Parse(Console.ReadLine());
+        }
 
-            var result = 0;
+        private static int GetInput()
+        {
+            return int.Parse(Console.ReadLine());
+        }
 
+        private static int Calculate(int number1, int number2, string operation)
+        {
             switch (operation)
             {
                 case "+":
-                    result = number1 + number2;
-                    break;
+                    return number1 + number2;
                 case "-":
-                    result = number1 - number2;
-                    break;
+                    return number1 - number2;
                 case "*":
-                    result = number1 * number2;
-                    break;
+                    return number1 * number2;
                 case "/":
-                    result = number1 / number2;
-                    break;
+                    return number1 / number2;
                 default:
                     throw new Exception("Wybrałeś złą operację!");
             }
-            
-           
-            Console.WriteLine($"Wynik Twojego działania to: {result}.");
         }
-        catch (Exception ex)
-            {
-               
-                Console.WriteLine(ex.Message);
-            }
-}
+    }
 }
