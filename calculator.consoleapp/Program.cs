@@ -45,7 +45,9 @@
                 default:
                     throw new Exception("Wybrałeś złą operację!");
             }
+            
             //9. Wyświetlenie wyniku użytkownikowi
+            Console.WriteLine($"Wynik Twojego działania to: {result}.");
         }
     }
 }
