@@ -21,8 +21,30 @@
 
             //6. Prośba o podanie 2 liczby
             Console.WriteLine("Podaj proszę 2 liczbę:");
+
             //7. Pobranie liczby od użytkownika
+            var number2 = int.Parse(Console.ReadLine());
+
             //8. Wykonanie obliczeń
+            var result = 0;
+
+            switch (operation)
+            {
+                case "+":
+                    result = number1 + number2;
+                    break;
+                case "-":
+                    result = number1 - number2;
+                    break;
+                case "*":
+                    result = number1 * number2;
+                    break;
+                case "/":
+                    result = number1 / number2;
+                    break;
+                default:
+                    throw new Exception("Wybrałeś złą operację!");
+            }
             //9. Wyświetlenie wyniku użytkownikowi
         }
     }
