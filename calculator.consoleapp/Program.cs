@@ -11,7 +11,7 @@
             Console.WriteLine("Podaj proszę 1 liczbę:");
 
             //3. Pobranie liczby od użytkownika
-            var number1 = Console.ReadLine();
+            var number1 = int.Parse(Console.ReadLine());
             //4. Prośba o podanie działania
             //5. Pobranie wybranego działania od użytkownika
             //6. Prośba o podanie 2 liczby
