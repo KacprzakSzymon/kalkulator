@@ -49,5 +49,10 @@
             //9. Wyświetlenie wyniku użytkownikowi
             Console.WriteLine($"Wynik Twojego działania to: {result}.");
         }
-    }
+        catch (Exception ex)
+            {
+                //logowanie do pliku
+                Console.WriteLine(ex.Message);
+            }
+}
 }
