@@ -12,7 +12,9 @@
 
             //3. Pobranie liczby od użytkownika
             var number1 = int.Parse(Console.ReadLine());
+
             //4. Prośba o podanie działania
+            Console.WriteLine("Jaką operację chcesz wykonać? Możliwe operacje to: '+', '-', '*', '/'.");
             //5. Pobranie wybranego działania od użytkownika
             //6. Prośba o podanie 2 liczby
             //7. Pobranie liczby od użytkownika
